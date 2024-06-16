@@ -1,6 +1,6 @@
 import { LandingPageView } from "./LandingPageView";
 
-export function LandingPageContainer({children}) {
+export function LandingPageContainer() {
     return (
         <LandingPageView/>
     )

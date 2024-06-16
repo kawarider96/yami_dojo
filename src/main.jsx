@@ -8,6 +8,7 @@ import './index.css'
 import './button.css'
 import { AbcContainer } from './PAGES/abc-page/AbcContainer';
 import { ThemeProvider } from "@material-tailwind/react";
+import { WordsContainer } from './PAGES/words/WordsContainer';
 
 const router = createBrowserRouter([
   {
@@ -18,13 +19,17 @@ const router = createBrowserRouter([
     path: "/abc",
     element: <MainLayout><AbcContainer /></MainLayout>,
   },
+  {
+    path: "/words",
+    element: <MainLayout><WordsContainer /></MainLayout>,
+  },
 
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <SnackbarProvider maxSnack={3}>
     <ThemeProvider>
-    <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </ThemeProvider>
   </SnackbarProvider>
 )

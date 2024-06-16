@@ -11,7 +11,7 @@ export function Navbar() {
 
             <BasicButton text={'abc'} action={() => navigate('/abc')}/>
    
-            <BasicButton text={'szótár'}/>
+            <BasicButton text={'szótár'} action={() => navigate('/words')}/>
         </div>
     )
 }
