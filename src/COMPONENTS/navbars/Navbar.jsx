@@ -7,11 +7,13 @@ export function Navbar() {
     return (
         <div className="h-20 flex items-center p-4 gap-3">
             
-            <BasicButton text={'Főoldal'} action={() => navigate('/')}/>
+            <BasicButton action={() => navigate('/')}>Főoldal</BasicButton>
 
-            <BasicButton text={'abc'} action={() => navigate('/abc')}/>
+            <BasicButton action={() => navigate('/abc')}>ABC</BasicButton>
    
-            <BasicButton text={'szótár'} action={() => navigate('/words')}/>
+            <BasicButton action={() => navigate('/words')}>szótár</BasicButton>
+
+            <BasicButton action={() => navigate('/training')}>Gyakorló teszt</BasicButton>
         </div>
     )
 }

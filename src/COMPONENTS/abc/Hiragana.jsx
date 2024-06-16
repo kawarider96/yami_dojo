@@ -1,7 +1,15 @@
 import { Button } from "@material-tailwind/react"
 import { hiraganaAlphabet } from "../../SUPPORT/DATA/abc-data"
+import { SpeechButton } from "../buttons/SpeechButton"
 
-export function Hiragana()  {
+export function Hiragana() {
+    const handlePlay = (filename) => {
+      const audio = new Audio(`/hiragana_sounds/${filename}.mp3`);
+      audio.play().catch(error => {
+        console.error('Error playing audio:', error);
+      });
+    };
+  
     return (
         <div className="p-5">
             <div className="text-center p-5 font-bold tracking-widest">
@@ -55,5 +63,6 @@ export function Hiragana()  {
 
             </div>
         </div>
-    )
-}
+      </div>
+    );
+  }
