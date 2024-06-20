@@ -24,7 +24,7 @@ export const basicTheme = extendTheme({
         },
         background: {
             'gradient-black': 'linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,212,255,0) 100%)',
-            'gradient-lime': 'linear-gradient(19deg, rgba(0,255,0,1) 0%, rgba(0,255,0,0) 80%)',
+            'gradient-lime': 'linear-gradient(to right, #11998e, #38ef7d)',
         },
       },
       typography: {

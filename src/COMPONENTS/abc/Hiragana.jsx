@@ -83,18 +83,18 @@ export function Hiragana() {
                             </Button>
                         )}
                         <Box>
-                            <Typography level="h2">{item.hiragana}</Typography>
+                            <Typography level="h2" sx={{textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',}}>{item.hiragana}</Typography>
                             <Typography level="body-sm">{item.romanji}</Typography>
                         </Box>
                         {item.dakuten && (
                             <Box>
-                                <Typography level="h2" sx={{color:'#f3ff00'}}>{item.dakuten}</Typography>
+                                <Typography level="h2" sx={{color:'#f3ff00', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',}}>{item.dakuten}</Typography>
                                 <Typography level="body-sm">{item.dakuten_romanji}</Typography>
                             </Box>
                         )}
                         {item.handakuten && (
                             <Box>
-                                <Typography level="h2" sx={{color:'#FC4100'}}>{item.handakuten}</Typography>
+                                <Typography level="h2" sx={{color:'#FC4100', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',}}>{item.handakuten}</Typography>
                                 <Typography level="body-sm">{item.handakuten_romanji}</Typography>
                             </Box>
                         )}

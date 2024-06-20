@@ -25,12 +25,12 @@ export function LandingPageView() {
 
             <Grid xs={12}>
                 <Box sx={{textAlign:'center'}}>
-                    <Typography level="h1">つくりて</Typography>
+                    <Typography level="h1" sx={{textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',}}>つくりて</Typography>
                 </Box>
                 <Box>
-                    <Typography sx={{textAlign:'center'}}>Királyfalvi Krisztián</Typography>
-                    <Typography sx={{textAlign:'center'}}> 06 70 36 77 966</Typography>
-                    <Typography sx={{textAlign:'center'}}> fejlesztő</Typography>
+                    <Typography sx={{textAlign:'center', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',}}>Királyfalvi Krisztián</Typography>
+                    <Typography sx={{textAlign:'center', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',}}> 06 70 36 77 966</Typography>
+                    <Typography sx={{textAlign:'center', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',}}> fejlesztő</Typography>
                 </Box>
             </Grid>
 

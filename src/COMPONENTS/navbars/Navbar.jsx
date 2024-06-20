@@ -46,7 +46,6 @@ export function Navbar() {
             alignItems:'center', 
             justifyContent:'space-around',
             boxShadow:'lg',
-            position:'relative',
             width:'100vw'
             }}>
             <Logo height={'100px'}/>
@@ -64,9 +63,9 @@ export function Navbar() {
                 zIndex:'50',
                 padding:'20px',
                 transition:'all 0.5s ease-in-out',
-                top:'50%',
+                top:'0%',
                 left: '50%',
-                transform:isOpen ? 'translate(-52.5%, 35%)' : 'translate(-200%, 35%)',
+                transform:isOpen ? 'translate(-50%, 50%)' : 'translate(-200%, 50%)',
                 background:'linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,212,255,0) 100%)'}}>
                 {buttons.map((button, index) => (
                     <Button variant="solid" sx={{flex:1}} key={index} onClick={button.action}>{button.title}</Button>
@@ -74,35 +73,7 @@ export function Navbar() {
             </Box>
         </Stack>
     );
-    }
-
-    if (mdScreen) {
-        return (
-            <Stack direction="row" spacing={1} sx={{padding:'10px', alignItems:'center', boxShadow:'lg'}}>
-                <Logo height={'100px'}/>
-                <Box sx={{width:'100%', justifyContent:'space-evenly', display:'flex', gap:'10px'}}>
-                    {buttons.map((button, index) => (
-                        <Button variant="solid" sx={{flex:1}} key={index} onClick={button.action}>{button.title}</Button>
-                    ))}
-                </Box>
-            </Stack>
-        );
-    }
-
-    if (lgScreen) {
-        return (
-            <Stack direction="row" spacing={1} sx={{padding:'10px', alignItems:'center', boxShadow:'lg'}}>
-                <Logo height={'100px'}/>
-                <Box sx={{width:'100%', justifyContent:'space-evenly', display:'flex', gap:'10px'}}>
-                    {buttons.map((button, index) => (
-                        <Button variant="solid" sx={{flex:1}} key={index} onClick={button.action}>{button.title}</Button>
-                    ))}
-                </Box>
-            </Stack>
-        );
-    }
-
-    if (xlScreen) {
+    } else {
         return (
             <Stack direction="row" spacing={1} sx={{padding:'10px', alignItems:'center', boxShadow:'lg'}}>
                 <Logo height={'100px'}/>
@@ -118,21 +89,3 @@ export function Navbar() {
 }
 
 
-/*
- <div className="h-40 flex items-center p-4 gap-3">
-            <div className="w-full md:w-1/3 flex relative">
-
-            </div>
-            
-            <div
-                ref={menuRef}
-                className={`w-fit border fixed flex flex-col items-center gap-5 justify-center z-50 transition-transform duration-300 ease-in-out md:relative md:bg-transparent md:flex-row md:w-2/3 md:gap-3 md:h-auto md:transform-none`}
-                style={{ transform: isOpen ? 'translateY(-100%)' : 'translateY(100%)' }}
-            >
-                <BasicButton action={() => navigate('/')}>Főoldal</BasicButton>
-                <BasicButton action={() => navigate('/abc')}>ABC</BasicButton>
-                <BasicButton action={() => navigate('/words')}>Szótár</BasicButton>
-                <BasicButton action={() => navigate('/training')}>Gyakorló teszt</BasicButton>
-            </div>
-        </div>
-*/
