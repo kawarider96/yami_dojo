@@ -1,68 +1,106 @@
-import { Button } from "@material-tailwind/react"
-import { hiraganaAlphabet } from "../../SUPPORT/DATA/abc-data"
-import { SpeechButton } from "../buttons/SpeechButton"
+import { useState, useEffect, useRef } from "react";
+import { hiraganaAlphabet } from "../../SUPPORT/DATA/abc-data";
+import { SpeechButton } from "../buttons/SpeechButton";
+import { Box, Grid, Typography, Button } from "@mui/joy";
+import { basicTheme } from "../../SUPPORT/THEME/theme";
 
 export function Hiragana() {
-    const handlePlay = (filename) => {
-      const audio = new Audio(`/hiragana_sounds/${filename}.mp3`);
-      audio.play().catch(error => {
-        console.error('Error playing audio:', error);
-      });
-    };
-  
+  const audioRef = useRef(new Audio());
+
+  const handlePlay = (romanji) => {
+      const audio = audioRef.current;
+      audio.src = `/hiragana_sounds/${romanji}.mp3`;
+      audio.play();
+  };
+
+
     return (
-        <div className="p-5">
-            <div className="text-center p-5 font-bold tracking-widest">
-                <h1>HIRAGANA</h1>
-                <div className="flex items-center">
-                    <div>
-                        <div className="flex items-center gap-5 p-5 font-bold tracking-widest">
-                            <div className="bg-blue-600 h-12 w-12 rounded-xl shadow-xl"></div>
-                            <h1>DAKUTEN</h1>
-                        </div>
-                        <div className="flex items-center gap-5 p-5 font-bold tracking-widest">
-                            <div className="bg-red-600 h-12 w-12 rounded-xl shadow-xl"></div>
-                            <h1>HANDAKUTEN</h1>
-                        </div>
-                    </div>
-                    <div className="flex items-center text-justify p-10">
-                        <p>
-                        A hiragana a japán írásrendszer egyik alapvető eleme, amelyet főként japán 
-                        szavak és nyelvtani elemek írására használnak. A hiragana írásjegyek az 
-                        egyszerűbb és lekerekítettebb formájukról ismertek, és mindegyik egy-egy 
-                        szótagot jelöl. A hiragana ABC összesen 46 alapvető karakterből áll, amelyeket a 
+        <Grid container sx={{padding:'20px'}}>
+            <Grid xs={12}>
+                <Typography level="h1" sx={{textAlign:'center'}}>HIRAGANA</Typography>
+            </Grid>
+        
+            <Grid xs={12} sm={12} md={8} sx={{padding:'20px'}}>
+                    <Typography level="body-sm">
+                        A hiragana a japán írásrendszer egyik alapvető eleme, amelyet főként japán
+                        szavak és nyelvtani elemek írására használnak. A hiragana írásjegyek az
+                        egyszerűbb és lekerekítettebb formájukról ismertek, és mindegyik egy-egy
+                        szótagot jelöl. A hiragana ABC összesen 46 alapvető karakterből áll, amelyeket a
                         japán ábécé összes szótagjának leírására használnak.<br/><br/>
                         DAKUTEN<br/>
-                        A dakuten, más néven "zöngésítő jel", egy kis két vonal, amelyet a hiragana karakter jobb 
+                        A dakuten, más néven "zöngésítő jel", egy kis két vonal, amelyet a hiragana karakter jobb
                         felső sarkába helyeznek. A dakuten zöngét ad a mássalhangzóknak<br/><br/>
                         HANDAKUTEN<br/>
-                        A handakuten, más néven "pöttyös jel", egy kis kör, amely szintén a hiragana karakter jobb 
+                        A handakuten, más néven "pöttyös jel", egy kis kör, amely szintén a hiragana karakter jobb
                         felső sarkába kerül. A handakuten a h-sorozatú mássalhangzókat p-sorozatúvá alakítja.
-                        </p>
-                    </div>
-                </div>
-            </div>
+                    </Typography>
+            </Grid>
 
-            <div className="grid grid-cols-5 justify-items-center gap-5">
+            <Grid xs={12} sm={12} md={4} sx={{alignContent:'center', marginTop:'10px', marginBottom:'20px'}}>
+                <Box sx={{display:'flex', alignItems:'center'}}>
+                    <Box sx={{display:'flex', flexDirection:'column', gap:'20px'}}>
+                        <Box sx={{display:'flex', gap:'10px', alignItems:'center'}}>
+                            <Box sx={{height:'50px', width:'50px', boxShadow:'lg', backgroundColor:'#f3ff00', borderRadius:'10px'}}></Box>
+                            <Typography level="h3">DAKUTEN</Typography>
+                        </Box>
+                        <Box sx={{display:'flex', gap:'10px', alignItems:'center'}}>
+                            <Box sx={{height:'50px', width:'50px', boxShadow:'lg', backgroundColor:'#FC4100', borderRadius:'10px'}}></Box>
+                            <Typography level="h3">HANDAKUTEN</Typography>
+                        </Box>
+                    </Box>
+                </Box>
+            </Grid>
+
+            <Grid container xs={12} sx={{display:'flex', gap:'10px', justifyContent:'center'}}>
                 {hiraganaAlphabet.map((item, index) => (
-                    <div key={index} className={`grid grid-cols-2 w-full p-5 rounded-xl text-center hover:scale-110 transition cursor-pointer ${item.hiragana ? 'bg-dark-card-bg shadow-xl' : ''}`}>
-                        <div>
-                            <h1 className="font-bold text-6xl">{item.hiragana}</h1>
-                            <p className="text-3xl">{item.romanji}</p>
-                        </div>
-                        <div>
-                            <h1 className="font-bold text-6xl text-blue-600">{item.dakuten}</h1>
-                            <p className="text-3xl text-blue-600">{item.dakuten_romanji}</p>
-                        </div>
-                        <div>
-                            <h1 className="font-bold text-6xl text-red-600">{item.handakuten}</h1>
-                            <p className="text-3xl text-red-600">{item.handakuten_romanji}</p>
-                        </div>
-                    </div>
+                    <Grid xs={12} sm={3} md={3} lg={2}
+                        onClick={() => handlePlay(item.romanji)}
+                        key={index}
+                        sx={{
+                            display:'flex', 
+                            gap:'20px', 
+                            alignItems:'center', 
+                            justifyContent:'center', 
+                            position:'relative',
+                            width:'100%',
+                            padding:'20px',
+                            borderRadius:'10px',
+                            textAlign:'center',
+                            transition:'all 0.3s',
+                            cursor:'pointer',
+                            '&:hover': {transform: 'scale(1.01)'},
+                            background: basicTheme.colorSchemes.light.palette.background['gradient-lime'],
+                            boxShadow: basicTheme.shadow.lg,
+                        }}
+                        className={` ${item.hiragana ? 'bg-dark-card-bg shadow-xl' : ''}`}
+                    >
+                        {item.hiragana && (
+                            <Button
+                             sx={{position:'absolute', top:'10px', left:'10px', background:basicTheme.colorSchemes.light.palette.background['gradient-black'], padding:'10px', shadow:basicTheme.shadow.lg}}>
+                                <span class="material-symbols-outlined" style={{color:'white'}}>
+                                    volume_up
+                                </span>
+                            </Button>
+                        )}
+                        <Box>
+                            <Typography level="h2">{item.hiragana}</Typography>
+                            <Typography level="body-sm">{item.romanji}</Typography>
+                        </Box>
+                        {item.dakuten && (
+                            <Box>
+                                <Typography level="h2" sx={{color:'#f3ff00'}}>{item.dakuten}</Typography>
+                                <Typography level="body-sm">{item.dakuten_romanji}</Typography>
+                            </Box>
+                        )}
+                        {item.handakuten && (
+                            <Box>
+                                <Typography level="h2" sx={{color:'#FC4100'}}>{item.handakuten}</Typography>
+                                <Typography level="body-sm">{item.handakuten_romanji}</Typography>
+                            </Box>
+                        )}
+                    </Grid>
                 ))}
-
-            </div>
-        </div>
-      </div>
+            </Grid>
+        </Grid>
     );
-  }
+}

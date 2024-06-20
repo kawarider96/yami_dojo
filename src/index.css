@@ -1,9 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
   
-  body {
+  body, html {
     font-family: "Bebas Neue", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -11,18 +8,18 @@
 
   @keyframes impact {
     0% {
-      transform: translateY(-1000px);
+      transform: translateY(-1000px) translateX(-50%);
       opacity: 0;
     }
     60% {
-      transform: translateY(20px);
+      transform: translateY(-70%) translateX(-50%);
       opacity: 1;
     }
     80% {
-      transform: translateY(-10px);
+      transform: translateY(-90%) translateX(-50%);
     }
     100% {
-      transform: translateY(0);
+      transform: translateY(-80%) translateX(-50%);
       opacity: 1;
     }
   }

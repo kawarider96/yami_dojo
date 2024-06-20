@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Xinput } from "../../COMPONENTS/inputs/Xinput";
 import { hiraganaAlphabet } from "../../SUPPORT/DATA/abc-data";
 import { BasicButton } from "../../COMPONENTS/buttons/BasicButton";
+import { Grid, Box, Button, Typography, Input } from "@mui/joy";
+import { basicTheme } from "../../SUPPORT/THEME/theme";
 
 export function TrainingView() {
     const [answer, setAnswer] = useState('');
@@ -62,9 +64,29 @@ export function TrainingView() {
     };
 
     return (
-        <div className="relative flex justify-center items-center h-screen">
-            <img src="/images/cherry-bg.png" alt="Samurai" className="h-full absolute z-0 right-0 bottom-0"/>
-            <div className="w-1/2 bg-samurai-gradient p-5 rounded-xl shadow-xl z-10">
+        <Grid container sx={{backgroundImage:'url(/images/cherry-bg.png)', backgroundSize:'cover', backgroundPosition:'center', minHeight:'100dvh', alignContent:'center', justifyContent:'center', padding:'10px'}}>
+            <Grid xs={12} sx={{gap:'20px', background:basicTheme.colorSchemes.light.palette.background['gradient-black'], display:'grid', justifyContent:'center', alignItems:'center', padding:'20px', boxShadow:'xl'}}>
+                <Typography level="h3" sx={{color:'primary'}}>Vajon melyik hiragana karakter látható a képen?</Typography>
+                <Typography level="h1" sx={{color:'primary', textAlign:'center'}}>{currentQuestion.hiragana}</Typography>
+                <Input value={answer} onChange={handleAnswerChange} variant="outlined" color="neutral" placeholder="válaszolj a kérdésre" />
+                <Button variant="solid" color="primary" onClick={checkAnswer}>Ellenőrzés</Button>
+                <Typography>{helperText.text}</Typography>
+                <Typography>Pontszám: {score}</Typography>
+                {showText && (
+                    <Box key={animationKey} 
+                    sx={{textAlign:'center', color:'red', position:'absolute', top:'50%', left:'50%', transform:'translate(-50%, -50%)'}}
+                    className="impact-animation">
+                        <Typography level="h2">間違った答え</Typography>
+                        <Typography level="h3">(Helytelen válasz!)</Typography>
+                    </Box>
+                )}
+            </Grid>
+        </Grid>
+    );
+}
+
+/*
+<div className="w-1/2 bg-samurai-gradient p-5 rounded-xl shadow-xl z-10">
                 <div>
                     <h1 className="text-4xl font-bold text-center tracking-widest">Vajon melyik hiragana karakter látható a képen?</h1>
                 </div>
@@ -96,6 +118,4 @@ export function TrainingView() {
                     <h2 className="text-2xl">Pontszám: {score}</h2>
                 </div>
             </div>
-        </div>
-    );
-}
+*/

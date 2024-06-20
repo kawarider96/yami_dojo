@@ -1,4 +1,5 @@
 import { WordCard } from "../../COMPONENTS/cards/WordCard";
+import { Grid, Box, Button, Typography } from "@mui/joy";
 
 export function WordsView() {
     const familyWords = [
@@ -42,8 +43,8 @@ export function WordsView() {
     ];
 
     return (
-        <div className="h-full p-5">
-            <div className="h-1/2 flex flex-wrap gap-5">
+        <Grid container spacing={2} sx={{padding:'20px'}}>
+            <Grid xs={12} md={6}>
                 <WordCard 
                 title={'család (家族 - kazoku)'} 
                 description={`A japán kultúrában a család (家族, kazoku) központi szerepet játszik, és mélyen gyökerezik a társadalmi struktúrában és mindennapi életben. A hagyományos japán családmodell, az úgynevezett "ie" rendszer, generációkon keresztül egy nagyobb családi házban élt együtt, ahol az idősebb családtagok nagy tiszteletnek örvendtek. Ebben a rendszerben az apa volt a család feje, aki felelős volt a család gazdasági jólétéért és döntéshozataláért, míg az anya általában a háztartás vezetésével és a gyermekek nevelésével foglalkozott.
@@ -54,31 +55,32 @@ export function WordsView() {
                 words={familyWords}
                 modalTitle={'család (家族, kazoku)'}
                 />
-
+            </Grid>
+            <Grid xs={12} md={6}>
                 <WordCard 
-                title={'いえ (ie - otthon)'} 
-                description={`Családi Összetartás:
-                Az "ie" nem csupán egy épület, hanem a család központja, ahol a generációk együtt élnek, és ahol a családi hagyományok és értékek továbbadódnak. Az idősebb családtagokkal való együttélés hagyománya mélyen gyökerezik a japán kultúrában.
+                    title={'otthon (いえ - ie)'} 
+                    description={`Családi Összetartás:
+                    Az "ie" nem csupán egy épület, hanem a család központja, ahol a generációk együtt élnek, és ahol a családi hagyományok és értékek továbbadódnak. Az idősebb családtagokkal való együttélés hagyománya mélyen gyökerezik a japán kultúrában.
 
-                Hagyományok és Rituálék:
-                A japán otthon számos hagyományos rituálé színhelye, mint például a teaceremónia (茶道, sadō), a shinto szertartások és az éves ünnepek (például az Újév, お正月, Oshōgatsu). Az otthonban tartott rituálék és ünnepek összekapcsolják a családot és megerősítik a közösségi kötelékeket.
+                    Hagyományok és Rituálék:
+                    A japán otthon számos hagyományos rituálé színhelye, mint például a teaceremónia (茶道, sadō), a shinto szertartások és az éves ünnepek (például az Újév, お正月, Oshōgatsu). Az otthonban tartott rituálék és ünnepek összekapcsolják a családot és megerősítik a közösségi kötelékeket.
 
-                Építészeti Sajátosságok:
-                A hagyományos japán otthonok (和風, wafū) jellegzetes építészeti elemei, mint például a tatami szőnyegek, tolóajtók (障子, shōji), és a verandák (縁側, engawa) mind hozzájárulnak a nyugalom és harmónia érzéséhez. Ezek az elemek a természetközeliséget és az egyszerűséget tükrözik.
+                    Építészeti Sajátosságok:
+                    A hagyományos japán otthonok (和風, wafū) jellegzetes építészeti elemei, mint például a tatami szőnyegek, tolóajtók (障子, shōji), és a verandák (縁側, engawa) mind hozzájárulnak a nyugalom és harmónia érzéséhez. Ezek az elemek a természetközeliséget és az egyszerűséget tükrözik.
 
-                Kertkultúra:
-                Az otthonhoz tartozó kertek (庭, niwa) szintén fontosak, mivel a japán kultúrában a természettel való harmonikus kapcsolat nagy jelentőséggel bír. A kertek kialakítása gyakran a nyugalom és a meditáció helyévé teszi az otthont.
+                    Kertkultúra:
+                    Az otthonhoz tartozó kertek (庭, niwa) szintén fontosak, mivel a japán kultúrában a természettel való harmonikus kapcsolat nagy jelentőséggel bír. A kertek kialakítása gyakran a nyugalom és a meditáció helyévé teszi az otthont.
 
-                Modern Változások:
-                A modern japán társadalomban az urbanizáció és a nyugati hatások ellenére az "ie" továbbra is fontos szerepet játszik. Az emberek törekednek arra, hogy a hagyományos értékeket megőrizzék, miközben alkalmazkodnak a modern életstílushoz.
+                    Modern Változások:
+                    A modern japán társadalomban az urbanizáció és a nyugati hatások ellenére az "ie" továbbra is fontos szerepet játszik. Az emberek törekednek arra, hogy a hagyományos értékeket megőrizzék, miközben alkalmazkodnak a modern életstílushoz.
 
-                Az "ie" tehát nem csupán egy lakóhelyet jelent a japán kultúrában, hanem a család és a közösség szimbolikus központját, ahol a hagyományok, értékek és rituálék találkoznak és ápolódnak.
-                A japán kultúrában a családi ünnepek, mint például az Újév (お正月, Oshōgatsu) és a Kecske Nap (こどもの日, Kodomo no Hi) különleges alkalmak, amikor a családok összegyűlnek, és közösen ünneplik a hagyományokat és az egymás iránti szeretetet.`}
-                image={"images/samurai-house.png"}
-                words={homeRelatedWords}
-                modalTitle={'いえ (ie - otthon)'}
+                    Az "ie" tehát nem csupán egy lakóhelyet jelent a japán kultúrában, hanem a család és a közösség szimbolikus központját, ahol a hagyományok, értékek és rituálék találkoznak és ápolódnak.
+                    A japán kultúrában a családi ünnepek, mint például az Újév (お正月, Oshōgatsu) és a Kecske Nap (こどもの日, Kodomo no Hi) különleges alkalmak, amikor a családok összegyűlnek, és közösen ünneplik a hagyományokat és az egymás iránti szeretetet.`}
+                    image={"images/samurai-house.png"}
+                    words={homeRelatedWords}
+                    modalTitle={'otthon (いえ - ie)'}
                 />
-            </div>
-        </div>
+            </Grid>
+        </Grid>
     )
 }

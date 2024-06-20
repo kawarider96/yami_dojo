@@ -5,11 +5,12 @@ import { SnackbarProvider } from 'notistack';
 import { MainLayout } from './COMPONENTS/layouts/MainLayout';
 import { LandingPageContainer } from './PAGES/LandingPage/LandingPageContainer';
 import './index.css'
-import './button.css'
 import { AbcContainer } from './PAGES/abc-page/AbcContainer';
-import { ThemeProvider } from "@material-tailwind/react";
 import { WordsContainer } from './PAGES/words/WordsContainer';
 import { TrainingContainer } from './PAGES/training/TrainingContainer';
+import { CssVarsProvider } from '@mui/joy';
+import { basicTheme } from './SUPPORT/THEME/theme';
+import CssBaseline from '@mui/joy/CssBaseline';
 
 const router = createBrowserRouter([
   {
@@ -33,8 +34,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <SnackbarProvider maxSnack={3}>
-    <ThemeProvider>
-      <RouterProvider router={router} />
-    </ThemeProvider>
+      <CssVarsProvider theme={basicTheme}>
+        <CssBaseline />
+        <RouterProvider router={router} />
+      </CssVarsProvider>
   </SnackbarProvider>
 )
